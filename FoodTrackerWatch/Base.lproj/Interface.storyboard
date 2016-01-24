@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JLp-gr-w0Q">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+    </dependencies>
+    <scenes>
+        <!--美食列表-->
+        <scene sceneID="Aqm-gR-jVz">
+            <objects>
+                <controller identifier="InterfaceController" title="美食列表" id="JLp-gr-w0Q" customClass="InterfaceController" customModule="FoodTrackerWatch_Extension">
+                    <items>
+                        <button width="1" alignment="center" title="天气服务" id="RYd-Z8-Hhu">
+                            <fontDescription key="font" type="boldSystem" pointSize="16"/>
+                            <connections>
+                                <action selector="weatherAction" destination="JLp-gr-w0Q" id="yca-Qk-MfA"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" id="ZCe-LP-T2b"/>
+                        <table alignment="left" id="DYY-Iq-Ydi">
+                            <items>
+                                <tableRow identifier="MealCell" id="Ych-wT-Obf" customClass="MealCellController" customModule="FoodTrackerWatch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="aBa-b8-t62">
+                                        <items>
+                                            <imageView width="40" height="40" alignment="left" id="lRE-lK-9zd"/>
+                                            <label width="0.59999999999999998" alignment="right" verticalAlignment="center" text="Label" textAlignment="center" id="aYH-ij-lJR"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="mealImage" destination="lRE-lK-9zd" id="7Y0-Rk-bB5"/>
+                                        <outlet property="mealName" destination="aYH-ij-lJR" id="TZ4-k6-8fM"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="mealTable" destination="DYY-Iq-Ydi" id="EV3-hd-erT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="168" y="219"/>
+        </scene>
+        <!--天气-->
+        <scene sceneID="l3v-fu-V2T">
+            <objects>
+                <controller identifier="WeatherInterface" title="天气" hidesWhenLoading="NO" id="XgY-3m-0Xe" customClass="WeatherInterfaceController" customModule="FoodTrackerWatch_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="6yG-gM-WdB">
+                            <items>
+                                <label width="1" alignment="center" text="天气" textAlignment="center" id="Tf1-nI-a7l"/>
+                                <label alignment="right" verticalAlignment="bottom" text="城市" id="prs-XI-IWy"/>
+                                <button width="1" alignment="left" verticalAlignment="bottom" title="切换城市" id="Zys-fp-SbC">
+                                    <connections>
+                                        <action selector="cityPicker" destination="XgY-3m-0Xe" id="tm0-Od-HC5"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="8" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="background" destination="6yG-gM-WdB" id="kWL-fE-guY"/>
+                        <outlet property="cityLabel" destination="prs-XI-IWy" id="glQ-Qb-g8k"/>
+                        <outlet property="weatherLabel" destination="Tf1-nI-a7l" id="nPw-Iz-aJ2"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="363" y="219"/>
+        </scene>
+        <!--切换城市-->
+        <scene sceneID="mgi-9S-iTf">
+            <objects>
+                <controller identifier="CityPickerInterface" title="切换城市" hidesWhenLoading="NO" id="KvB-Po-M3V" customClass="CityPickerInterfaceController" customModule="FoodTrackerWatch_Extension">
+                    <items>
+                        <label width="1" height="0.22" alignment="center" text="城市" textAlignment="center" id="sXE-mB-D8k"/>
+                        <group width="1" height="0.5" alignment="left" id="sSr-eF-fyX">
+                            <items>
+                                <picker width="0.5" height="1" alignment="left" id="Oqj-v9-xp3" userLabel="Province Name">
+                                    <connections>
+                                        <action selector="provincePicker:" destination="KvB-Po-M3V" id="JPk-cb-xh3"/>
+                                    </connections>
+                                </picker>
+                                <picker width="0.5" height="1" alignment="right" verticalAlignment="center" id="UkO-sI-9De" userLabel="City Name">
+                                    <connections>
+                                        <action selector="cityPicker:" destination="KvB-Po-M3V" id="cdF-06-lIe"/>
+                                    </connections>
+                                </picker>
+                            </items>
+                        </group>
+                        <button width="1" height="0.28000000000000003" alignment="left" title="确定" id="XU6-Oz-BPD">
+                            <connections>
+                                <action selector="returnAction" destination="KvB-Po-M3V" id="I2l-Uc-iO6"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="cityName" destination="UkO-sI-9De" id="P5s-6i-bIV"/>
+                        <outlet property="provinceName" destination="Oqj-v9-xp3" id="tJs-m9-h5S"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="555" y="219"/>
+        </scene>
+    </scenes>
+</document>
